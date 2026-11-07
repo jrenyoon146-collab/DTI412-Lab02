@@ -1,0 +1,45 @@
+{% extends 'catalog/base.html' %}
+
+{% block content %}
+
+<div style="text-align: center;">
+    <h1>Welcome to Course Portal</h1>
+    <p>Explore courses and improve your skills.</p>
+</div>
+
+<h2>All Courses</h2>
+
+{% for course in courses %}
+
+<div style="background: white; padding: 20px; margin-bottom: 20px;">
+
+    <h3>{{ course.title }}</h3>
+
+    <p>{{ course.description }}</p>
+
+    <a href="{% url 'catalog:course_detail' course.id %}">
+        View Details
+    </a>
+
+</div>
+
+{% empty %}
+
+<p>No courses available at the moment.</p>
+
+{% endfor %}
+
+<hr>
+
+<h2>Have a Question?</h2>
+
+<p>
+    If you have any questions about our courses,
+    please contact us.
+</p>
+
+<a href="{% url 'catalog:inquiry' %}">
+    <button>Go to Inquiry Page</button>
+</a>
+
+{% endblock %}

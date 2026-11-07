@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>All Courses</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+        }
+
+        nav {
+            background-color: #212529;
+            color: white;
+            padding: 20px 40px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .course-card {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        a {
+            color: #0d6efd;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        Course Portal
+    </nav>
+
+    <div class="container">
+
+        <h1>All Courses</h1>
+
+        {% for course in courses %}
+
+            <div class="course-card">
+
+                <h2>{{ course.title }}</h2>
+
+                <p>{{ course.description }}</p>
+
+                <a href="{% url 'catalog:course_detail' course.id %}">
+                    View Details
+                </a>
+
+            </div>
+
+        {% empty %}
+
+            <p>No courses available.</p>
+
+        {% endfor %}
+
+        <a href="{% url 'catalog:home' %}">
+            Back to Home
+        </a>
+
+    </div>
+
+</body>
+</html>
